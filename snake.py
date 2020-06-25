@@ -69,9 +69,8 @@ while not gameOver:
     top += topDirection
 
     snake = pygame.draw.rect(window, black, [left, top, 25, 25])
-    #fruit = pygame.draw.rect(window, myColor, [fruitLeft, fruitTop, 25, 25])
     fruit.draw(window)
-    
+    print(snake)
     if fruit.intersect(snake):
         fruitLeft = random.randrange(0, 500,25)
         fruitTop = random.randrange(0, 500,25)
@@ -80,6 +79,11 @@ while not gameOver:
         pygame.display.update()
         score +=10
         print(score)
+
+    if snake.left > 500 or snake.top > 500 or snake.width < 0 or snake.height < 0 :
+        gameOver = True
+        print('Game Over')
+
 
     pygame.display.update()
     
