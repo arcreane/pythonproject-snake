@@ -29,14 +29,14 @@ def grid():
 
 gameOver = False
 
-top = 250
 left = 250
+top = 250
 
-topDirection = 0
 leftDirection = 0
+topDirection = 0
 
-fruitTop = random.randrange(0, 500,25)
 fruitLeft = random.randrange(0, 500,25)
+fruitTop = random.randrange(0, 500,25)
 
 clock = pygame.time.Clock()
 
@@ -47,24 +47,24 @@ while not gameOver:
             gameOver = True
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_LEFT:
-                topDirection = -25
-                leftDirection = 0
-            elif event.key == pygame.K_RIGHT:
-                topDirection = 25
-                leftDirection = 0
-            elif event.key == pygame.K_UP:
                 leftDirection = -25
                 topDirection = 0
-            elif event.key == pygame.K_DOWN:
+            elif event.key == pygame.K_RIGHT:
                 leftDirection = 25
                 topDirection = 0
+            elif event.key == pygame.K_UP:
+                topDirection = -25
+                leftDirection = 0
+            elif event.key == pygame.K_DOWN:
+                topDirection = 25
+                leftDirection = 0
 
-    top += topDirection
     left += leftDirection
+    top += topDirection
 
     window.fill(green)
-    snake = pygame.draw.rect(window, black, [top, left, 25, 25])
-    fruit = pygame.draw.rect(window, red, [fruitTop, fruitLeft, 25, 25])
+    snake = pygame.draw.rect(window, black, [left, top, 25, 25])
+    fruit = pygame.draw.rect(window, red, [fruitLeft, fruitTop, 25, 25])
 
     pygame.display.update()
 
