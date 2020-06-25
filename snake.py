@@ -1,4 +1,5 @@
 import pygame
+import random
 
 pygame.init()
 
@@ -34,6 +35,9 @@ left = 250
 topDirection = 0
 leftDirection = 0
 
+fruitTop = random.randrange(0, 500,25)
+fruitLeft = random.randrange(0, 500,25)
+
 clock = pygame.time.Clock()
 
 #Méthode de mouvement
@@ -60,7 +64,7 @@ while not gameOver:
 
     window.fill(green)
     snake = pygame.draw.rect(window, black, [top, left, 25, 25])
-    fruit = pygame.draw.rect(window, red, [300, 400, 25, 25])
+    fruit = pygame.draw.rect(window, red, [fruitTop, fruitLeft, 25, 25])
 
     pygame.display.update()
 
