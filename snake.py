@@ -1,17 +1,12 @@
 import pygame
 import random
 import time
+from fruit import *
+from gameAssets import *
 
 pygame.init()
 
 print("Welcome to Snake")
-
-white = (211, 211, 211)
-black = (0, 0, 0)
-green = (58, 157, 35)
-red = (255, 0, 0)
-yellow = (255, 255, 0)
-pink = (255, 192, 203)
 
 window = pygame.display.set_mode((500, 500))
 pygame.display.set_caption('Snake')
@@ -28,13 +23,7 @@ def grid():
             topLign = 0
             leftLign += 25
             numberOfColumn += 1
-        pygame.display.update()
-
-def fruitColor():
-    fruitColor = [red,yellow,pink]
-    x = random.randrange(1,3)
-    return fruitColor[x]
-    
+            
 gameOver = False
 
 left = 250
@@ -43,15 +32,21 @@ top = 250
 leftDirection = 0
 topDirection = 0
 
-fruitLeft = random.randrange(0, 500,25)
-fruitTop = random.randrange(0, 500,25)
-
 score = 0
 
 clock = pygame.time.Clock()
 
+window.fill(green)
+grid()
+
+myColor = fruitColor()
+        
 #Méthode de mouvement
+fruit = Fruit()
 while not gameOver:
+    window.fill(green)
+    grid()
+    
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             gameOver = True
@@ -73,14 +68,15 @@ while not gameOver:
     left += leftDirection
     top += topDirection
 
-    window.fill(green)
     snake = pygame.draw.rect(window, black, [left, top, 25, 25])
-    fruit = pygame.draw.rect(window, red, [fruitLeft, fruitTop, 25, 25])
-
-    if snake == fruit:
+    #fruit = pygame.draw.rect(window, myColor, [fruitLeft, fruitTop, 25, 25])
+    fruit.draw(window)
+    
+    if fruit.intersect(snake):
         fruitLeft = random.randrange(0, 500,25)
         fruitTop = random.randrange(0, 500,25)
-        fruit = pygame.draw.rect(window, fruitColor(), [fruitLeft, fruitTop, 25, 25])
+        myColor = fruitColor()
+        fruit = Fruit()
         pygame.display.update()
         score +=10
         print(score)
