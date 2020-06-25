@@ -1,5 +1,6 @@
 import pygame
 import random
+import time
 
 pygame.init()
 
@@ -9,6 +10,8 @@ white = (211, 211, 211)
 black = (0, 0, 0)
 green = (58, 157, 35)
 red = (255, 0, 0)
+yellow = (255, 255, 0)
+pink = (255, 192, 203)
 
 window = pygame.display.set_mode((500, 500))
 pygame.display.set_caption('Snake')
@@ -27,6 +30,11 @@ def grid():
             numberOfColumn += 1
         pygame.display.update()
 
+def fruitColor():
+    fruitColor = [red,yellow,pink]
+    x = random.randrange(1,3)
+    return fruitColor[x]
+    
 gameOver = False
 
 left = 250
@@ -60,8 +68,8 @@ while not gameOver:
             elif event.key == pygame.K_DOWN:
                 topDirection = 25
                 leftDirection = 0
-        
 
+        
     left += leftDirection
     top += topDirection
 
@@ -72,13 +80,13 @@ while not gameOver:
     if snake == fruit:
         fruitLeft = random.randrange(0, 500,25)
         fruitTop = random.randrange(0, 500,25)
-        fruit = pygame.draw.rect(window, red, [fruitLeft, fruitTop, 25, 25])
+        fruit = pygame.draw.rect(window, fruitColor(), [fruitLeft, fruitTop, 25, 25])
         pygame.display.update()
-        score +=1
+        score +=10
         print(score)
 
     pygame.display.update()
-
+    
     clock.tick(10)
 
 pygame.quit()
