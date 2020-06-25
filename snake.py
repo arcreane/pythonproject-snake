@@ -12,6 +12,7 @@ red = (255, 0, 0)
 window = pygame.display.set_mode((500, 500))
 pygame.display.set_caption('Snake')
 
+#Affichage d'une grille sur la fenêtre
 def grid():
     numberOfColumn = 0
     topLign = 0
@@ -35,6 +36,7 @@ leftDirection = 0
 
 clock = pygame.time.Clock()
 
+#Méthode de mouvement
 while not gameOver:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -57,7 +59,8 @@ while not gameOver:
     left += leftDirection
 
     window.fill(green)
-    pygame.draw.rect(window, black, [top, left, 25, 25])
+    snake = pygame.draw.rect(window, black, [top, left, 25, 25])
+    fruit = pygame.draw.rect(window, red, [300, 400, 25, 25])
 
     pygame.display.update()
 
