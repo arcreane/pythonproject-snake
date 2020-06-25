@@ -38,6 +38,8 @@ topDirection = 0
 fruitLeft = random.randrange(0, 500,25)
 fruitTop = random.randrange(0, 500,25)
 
+score = 0
+
 clock = pygame.time.Clock()
 
 #Méthode de mouvement
@@ -58,6 +60,7 @@ while not gameOver:
             elif event.key == pygame.K_DOWN:
                 topDirection = 25
                 leftDirection = 0
+        
 
     left += leftDirection
     top += topDirection
@@ -65,6 +68,14 @@ while not gameOver:
     window.fill(green)
     snake = pygame.draw.rect(window, black, [left, top, 25, 25])
     fruit = pygame.draw.rect(window, red, [fruitLeft, fruitTop, 25, 25])
+
+    if snake == fruit:
+        fruitLeft = random.randrange(0, 500,25)
+        fruitTop = random.randrange(0, 500,25)
+        fruit = pygame.draw.rect(window, red, [fruitLeft, fruitTop, 25, 25])
+        pygame.display.update()
+        score +=1
+        print(score)
 
     pygame.display.update()
 
