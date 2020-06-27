@@ -1,11 +1,11 @@
 import pygame
 import random
 
-#Fenêtre du jeu
+#Fenetre du jeu
 window = pygame.display.set_mode((500, 500))
 pygame.display.set_caption('Snake')
 
-#Varioables globales
+#Variables globales
 white = (211, 211, 211)
 black = (0, 0, 0)
 green = (58, 157, 35)
@@ -20,13 +20,13 @@ topDirection = 0
 
 score = 0
 
-#Fonction pour la couleur du fruit
+#Fonction couleur du fruit
 def fruitColor():
     fruitColor = [red,yellow,pink]
     x = random.randrange(0,3)
     return fruitColor[x]
 
-#Fonction pour dessiner une grille
+#Fonction grille du jeu
 def grid():
     numberOfColumn = 0
     topLign = 0

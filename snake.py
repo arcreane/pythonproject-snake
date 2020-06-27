@@ -21,7 +21,7 @@ grid()
 
 def snake():
     for x in snakeList:
-        pygame.draw.rect(window, black, [left[0], top[1], 25, 25])
+        pygame.draw.rect(window, black, [x[0], x[1], 25, 25])
 
 snakeList = []
 snakeBody = 1
